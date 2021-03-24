@@ -101,6 +101,7 @@ const init = (settings) => {
   const sm_site_name_value = settings.sm_site_name || false;
 
   // Logic for restricting site search based on config.
+  options.siteList = [];
   if (settings.siteSearch !== undefined) {
     options.searchFields.forEach((searchField) => {
       if (searchField.field === 'sm_site_name' &&
