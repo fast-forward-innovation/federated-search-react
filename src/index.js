@@ -82,6 +82,7 @@ const init = (settings) => {
     // Hostname overridable in ./.env.local.js for testing purposes.
     hostname: window.location.hostname,
     autocomplete: false,
+    filters: []
   };
 
   const options = Object.assign(defaults, settings);
@@ -100,7 +101,6 @@ const init = (settings) => {
   const sm_site_name_value = settings.sm_site_name || false;
 
   // Logic for restricting site search based on config.
-  options.siteList = [];
   if (settings.siteSearch !== undefined) {
     options.searchFields.forEach((searchField) => {
       if (searchField.field === 'sm_site_name' &&
@@ -112,6 +112,8 @@ const init = (settings) => {
   else {
     options.siteList = sm_site_name_value;
   }
+
+  options.filters.push({field: "sm_site_name", type: "list-facet", value: options.siteList});
 
   // The client class.
   const solrClient = new SolrClient({
@@ -125,7 +127,7 @@ const init = (settings) => {
     rows: options.rows,
     hl: options.hl,
     mainQueryField: options.mainQueryField,
-    filters: [{field: "sm_site_name", type: "list-facet", value: options.siteList}],
+    filters: options.filters,
 
     // The change handler passes the current query- and result state for render
     // as well as the default handlers for interaction with the search component
