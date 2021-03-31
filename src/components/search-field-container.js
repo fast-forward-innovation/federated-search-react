@@ -49,7 +49,7 @@ class FederatedSearchFieldContainer extends React.Component {
           })}
           onClick={this.handleClick}
         >
-            Filter Results
+            {this.props.title || "Filter Results"}
         </button>
         <AnimateHeight
           duration={450}
@@ -78,6 +78,7 @@ class FederatedSearchFieldContainer extends React.Component {
 FederatedSearchFieldContainer.propTypes = {
   children: PropTypes.array,
   onNewSearch: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default FederatedSearchFieldContainer;

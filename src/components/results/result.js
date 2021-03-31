@@ -118,7 +118,7 @@ class FederatedResult extends React.Component {
             <cite className="fs-search-results__citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
             <span className="fs-search-results__date">{this.dateFormat(doc.ds_federated_date)}</span>
           </div>
-          <p className="fs-search-results__teaser" dangerouslySetInnerHTML={{__html: highlight.tm_rendered_item}} />
+          <blockquote cite={this.getCanonicalLink(doc)} className="fs-search-results__teaser" dangerouslySetInnerHTML={{__html: highlight.tm_rendered_item}} />
         </div>
       </li>
     )

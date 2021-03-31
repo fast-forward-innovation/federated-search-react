@@ -161,7 +161,7 @@ class FederatedSolrFacetedSearch extends React.Component {
             </div>
             <p className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__prompt fs-element-invisible' : 'solr-search-results-container__prompt'}>{this.props.options.searchPrompt || 'Please enter a search term.'}</p>
             <div className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__wrapper' : 'solr-search-results-container__wrapper fs-element-invisible'}>
-              <ResultContainerComponent bootstrapCss={bootstrapCss}>
+              <ResultContainerComponent bootstrapCss={bootstrapCss} title={this.props.options.menuTitle}>
                 <ResultHeaderComponent bootstrapCss={bootstrapCss}>
                   <ResultCount
                     bootstrapCss={bootstrapCss}
