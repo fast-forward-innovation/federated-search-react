@@ -49,7 +49,7 @@ class FederatedSearchFieldContainer extends React.Component {
           })}
           onClick={this.handleClick}
         >
-            {this.props.title || "Filter Results"}
+            {this.props.title ? this.props.title : "Filter Results"}
         </button>
         <AnimateHeight
           duration={450}
@@ -58,7 +58,7 @@ class FederatedSearchFieldContainer extends React.Component {
           <form className="fs-search-filters__form">
             <section className="fs-search-accordion" aria-labelledby="fs-section-title">
               <div className="fs-search-filters__row">
-                <h2 className="fs-search-filters__title" id="fs-section-title">Filter Results</h2>
+                <h2 className="fs-search-filters__title" id="fs-section-title">{this.props.title ? this.props.title : "Filter Results"}</h2>
               </div>
               { this.props.resultsCount > 0
                 ? (<ul className="fs-search-accordion__group">{this.props.children}</ul>)

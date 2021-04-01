@@ -106,6 +106,7 @@ class FederatedSolrFacetedSearch extends React.Component {
               bootstrapCss={bootstrapCss}
               onNewSearch={this.resetFilters}
               resultsCount={this.props.results.numFound}
+              title={this.props.options.menuTitle}
             >
               {/* Only render the visible facets / filters.
                   Note: their values may still be used in the query, if they were pre-set. */}
@@ -161,7 +162,7 @@ class FederatedSolrFacetedSearch extends React.Component {
             </div>
             <p className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__prompt fs-element-invisible' : 'solr-search-results-container__prompt'}>{this.props.options.searchPrompt || 'Please enter a search term.'}</p>
             <div className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__wrapper' : 'solr-search-results-container__wrapper fs-element-invisible'}>
-              <ResultContainerComponent bootstrapCss={bootstrapCss} title={this.props.options.menuTitle}>
+              <ResultContainerComponent bootstrapCss={bootstrapCss}>
                 <ResultHeaderComponent bootstrapCss={bootstrapCss}>
                   <ResultCount
                     bootstrapCss={bootstrapCss}
