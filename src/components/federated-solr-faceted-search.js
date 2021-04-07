@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { LiveAnnouncer } from 'react-aria-live';
 import FederatedSolrComponentPack from './federated_solr_component_pack';
 import helpers from '../helpers';
+import ResultComponents from './results/result-components';
 //import componentPack from "./component-pack";
 
 const getFacetValues = (type, results, field, lowerBound, upperBound) => {
@@ -52,6 +53,24 @@ class FederatedSolrFacetedSearch extends React.Component {
     this.props.onSearchFieldChange();
   }
 
+  getResultByType(type) {
+    switch (type) {
+      case "directory":
+        return ResultComponents.Directory
+        break;
+      case "conditions_treated":
+        return ResultComponents.Conditions
+        break;
+      case "treatments":
+        return ResultComponents.Treatment
+        break;
+      case "recipes":
+        return ResultComponents.Recipe;
+        break;
+        
+    }
+  }
+  
   render() {
     const {
       customComponents,
@@ -176,20 +195,25 @@ class FederatedSolrFacetedSearch extends React.Component {
                   {resultPending}
                 </ResultHeaderComponent>
                 <ResultListComponent bootstrapCss={bootstrapCss}>
-                  {results.docs.map((doc, i) => (
-                    <ResultComponent
-                      bootstrapCss={bootstrapCss}
-                      doc={doc}
-                      fields={searchFields}
-                      key={doc.id || i}
-                      onSelect={this.props.onSelectDoc}
-                      resultIndex={i}
-                      rows={rows}
-                      start={start}
-                      highlight={results.highlighting[doc.id]}
-                      hostname={this.props.options.hostname}
-                    />
-                  ))}
+                  {results.docs.map((doc, i) => {
+                    let CustomResultComponent = this.getResultByType(doc.ss_federated_type) || ResultComponent;
+
+                    return (
+                      <CustomResultComponent
+                        bootstrapCss={bootstrapCss}
+                        doc={doc}
+                        fields={searchFields}
+                        key={doc.id || i}
+                        onSelect={this.props.onSelectDoc}
+                        resultIndex={i}
+                        rows={rows}
+                        start={start}
+                        highlight={results.highlighting[doc.id]}
+                        hostname={this.props.options.hostname}
+                      />
+                    )
+                  })}
+
                   {preloadListItem}
                 </ResultListComponent>
                 {pagination}
