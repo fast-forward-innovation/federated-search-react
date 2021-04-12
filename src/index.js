@@ -62,7 +62,8 @@ const init = (settings) => {
     searchFields: [
       {label: "Enter Search Term:", field: "tm_rendered_item", type: "text", isHidden: false},
       {label: "Site Name", field: "sm_site_name", type: "list-facet", collapse: true, isHidden: false},
-      {label: "Type", field: "ss_federated_type", type: "list-facet", collapse: true, isHidden: false},
+      {label: "Type", field: "sm_federated_type", type: "list-facet", collapse: true, isHidden: false},
+      {label: "Department", field: "sm_department", type: "list-facet", collapse: true, isHidden: false},
       {label: "Date", field: "ds_federated_date", type: "range-facet", collapse: true, isHidden: false},
       {label: "Federated Terms", field: "sm_federated_terms", type: "list-facet", hierarchy: true, expandedHierarchies: [], isHidden: false},
     ],

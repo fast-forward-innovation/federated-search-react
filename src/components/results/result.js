@@ -106,18 +106,20 @@ class FederatedResult extends React.Component {
 
     return (
       <li className="fs-search-results__item" onClick={() => this.props.onSelect(doc)}>
-        {doc.ss_federated_image &&
+        {doc.sm_federated_image &&
         <div className="fs-search-results__container--left">
-          <img className="fs-search-results__image" src={doc.ss_federated_image} alt=""/>
+          <img className="fs-search-results__image" src={doc.sm_federated_image} alt=""/>
         </div>
         }
         <div className="fs-search-results__container--right">
-          <span className="fs-search-results__label">{doc.ss_federated_type}</span>
-          <h3 className="fs-search-results__heading"><a href={this.getCanonicalLink(doc)} dangerouslySetInnerHTML={{__html: doc.ss_federated_title}} /></h3>
+          <span className="fs-search-results__department">{doc.sm_department}</span>
+          <h3 className="fs-search-results__title"><a href={this.getCanonicalLink(doc)} dangerouslySetInnerHTML={{__html: doc.ss_federated_title}} /></h3>
           <div className="fs-search-results__meta">
             <cite className="fs-search-results__citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
+            <span className="fs-search-results__type">{doc.sm_federated_type}</span>
             <span className="fs-search-results__date">{this.dateFormat(doc.ds_federated_date)}</span>
           </div>
+          <blockquote cite={this.getCanonicalLink(doc)} className="fs-search-results__summary" dangerouslySetInnerHTML={{__html: doc.ss_summary}} />
           <blockquote cite={this.getCanonicalLink(doc)} className="fs-search-results__teaser" dangerouslySetInnerHTML={{__html: highlight.tm_rendered_item}} />
         </div>
       </li>

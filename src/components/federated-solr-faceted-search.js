@@ -196,7 +196,7 @@ class FederatedSolrFacetedSearch extends React.Component {
                 </ResultHeaderComponent>
                 <ResultListComponent bootstrapCss={bootstrapCss}>
                   {results.docs.map((doc, i) => {
-                    let CustomResultComponent = this.getResultByType(doc.ss_federated_type) || ResultComponent;
+                    let CustomResultComponent = this.getResultByType(doc.sm_federated_type) || ResultComponent;
 
                     return (
                       <CustomResultComponent
@@ -239,7 +239,7 @@ FederatedSolrFacetedSearch.defaultProps = {
   sortFields: [],
   truncateFacetListsAt: -1,
   showCsvExport: false,
-  sidebarFilters: ['sm_site_name', 'ss_federated_type', 'ds_federated_date', 'sm_federated_terms'],
+  sidebarFilters: ['sm_site_name', 'sm_federated_type', 'sm_department', 'ds_federated_date', 'sm_federated_terms'],
   options: {},
 };
 

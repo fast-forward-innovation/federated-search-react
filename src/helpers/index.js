@@ -26,7 +26,8 @@ const highlightText = (text, highlight) => {
 // Those filter fields for which we want to preserve state in qs.
 const filterFieldsWithQsState = [
   'sm_site_name',
-  'ss_federated_type',
+  'sm_federated_type',
+  'sm_department',
   'sm_federated_terms',
 ];
 
