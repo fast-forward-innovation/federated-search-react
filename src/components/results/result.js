@@ -106,7 +106,7 @@ class FederatedResult extends React.Component {
     const { doc, highlight } = this.props;
 
     return (
-      <li className="search-card search-card--condition" onClick={() => this.props.onSelect(doc)}>
+      <li className="search-card" onClick={() => this.props.onSelect(doc)}>
         {doc.ss_federated_image &&
           <div className="img">
             <img src={doc.ss_federated_image} />
