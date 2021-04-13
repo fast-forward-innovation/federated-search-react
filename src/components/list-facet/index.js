@@ -194,7 +194,7 @@ class FederatedListFacet extends React.Component {
               onChange={() => this.handleClick(termObj.facetValue)}
             /> {termObj.term}
               <span className="facet-item-amount"> ({termObj.facetCount}
-                <span className="fs-element-invisible">results</span>)
+                <span className="screen-hide">results</span>)
               </span>
             </label>
           </li>));
@@ -213,7 +213,7 @@ class FederatedListFacet extends React.Component {
                 }
               }}
             >
-              <span className="fs-element-invisible">Toggle filter group for</span> {type}
+              <span className="screen-hide">Toggle filter group for</span> {type}
             </div>
             <AnimateHeight
               duration={600}
@@ -243,7 +243,7 @@ class FederatedListFacet extends React.Component {
             }
           }}
         >
-          <span className="fs-element-invisible">Toggle filter group for</span> {label}
+          <span className="screen-hide">Toggle filter group for</span> {label}
         </div>
         <AnimateHeight
           duration={600}
@@ -266,7 +266,7 @@ class FederatedListFacet extends React.Component {
                           onChange={() => this.handleClick(facetValue)}
                         /> {facetValue}
                         <span className="facet-item-amount"> ({facetInputs[facetValue]}
-                          <span className="fs-element-invisible">results</span>)
+                          <span className="screen-hide">results</span>)
                         </span>
                       </label>
                     </li>

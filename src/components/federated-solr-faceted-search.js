@@ -179,8 +179,8 @@ class FederatedSolrFacetedSearch extends React.Component {
                 sortFields={sortFields}
               />
             </div>
-            <p className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__prompt fs-element-invisible' : 'solr-search-results-container__prompt'}>{this.props.options.searchPrompt || 'Please enter a search term.'}</p>
-            <div className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__wrapper' : 'solr-search-results-container__wrapper fs-element-invisible'}>
+            <p className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__prompt screen-hide' : 'solr-search-results-container__prompt'}>{this.props.options.searchPrompt || 'Please enter a search term.'}</p>
+            <div className={(searchFields.find(sf => sf.field === 'tm_rendered_item').value || this.props.options.showEmptySearchResults) ? 'solr-search-results-container__wrapper' : 'solr-search-results-container__wrapper screen-hide'}>
               <ResultContainerComponent bootstrapCss={bootstrapCss}>
                 <ResultHeaderComponent bootstrapCss={bootstrapCss}>
                   <ResultCount

@@ -84,6 +84,7 @@ class FederatedResult extends React.Component {
   renderSitenameLinks(sitenames, urls, originalSitename) {
     if (sitenames != null && urls != null) {
 
+      
       var sites = [];
       for (var i = 0; i < sitenames.length; i++) {
         sites.push(<a className="fs-search-results__site-name" href={urls[i]} key={i}>{sitenames[i]}</a>);
@@ -105,22 +106,42 @@ class FederatedResult extends React.Component {
     const { doc, highlight } = this.props;
 
     return (
-      <li className="fs-search-results__item" onClick={() => this.props.onSelect(doc)}>
-        {doc.sm_federated_image &&
-        <div className="fs-search-results__container--left">
-          <img className="fs-search-results__image" src={doc.sm_federated_image} alt=""/>
-        </div>
-        }
-        <div className="fs-search-results__container--right">
-          <span className="fs-search-results__department">{doc.sm_department}</span>
-          <h3 className="fs-search-results__title"><a href={this.getCanonicalLink(doc)} dangerouslySetInnerHTML={{__html: doc.ss_federated_title}} /></h3>
-          <div className="fs-search-results__meta">
-            <cite className="fs-search-results__citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
-            <span className="fs-search-results__type">{doc.sm_federated_type}</span>
-            <span className="fs-search-results__date">{this.dateFormat(doc.ds_federated_date)}</span>
+      <li className="search-card search-card--condition" onClick={() => this.props.onSelect(doc)}>
+        {doc.ss_federated_image &&
+          <div className="img">
+            <img src={doc.ss_federated_image} />
           </div>
-          <blockquote cite={this.getCanonicalLink(doc)} className="fs-search-results__summary" dangerouslySetInnerHTML={{__html: doc.ss_summary}} />
-          <blockquote cite={this.getCanonicalLink(doc)} className="fs-search-results__teaser" dangerouslySetInnerHTML={{__html: highlight.tm_rendered_item}} />
+        }
+        
+        <div className="text">
+          {doc.sm_department &&
+            <div className="tags">
+              <p>
+                {Array.isArray(doc.sm_department) ? doc.sm_department.map(dep => (
+                  <span className="tag tag--department">{dep}</span>
+                )) : 
+                  <span className="tag tag--department">BMC</span>
+                }
+              </p>
+            </div>
+          }
+
+          <h3 className="heading">
+            <a href={this.getCanonicalLink(doc)} dangerouslySetInnerHTML={{__html: doc.ss_federated_title}} />
+          </h3>
+
+          <p className="summary" dangerouslySetInnerHTML={{__html: doc.ss_summary}} />
+
+          {highlight.tm_rendered_item &&
+            <blockquote cite={this.getCanonicalLink(doc)} className="teaser" dangerouslySetInnerHTML={{__html: highlight.tm_rendered_item}} />
+          }
+          
+          <div className="meta">
+            <cite className="citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
+            <span className="date">{this.dateFormat(doc.ds_federated_date)}</span>
+            <span className="type">{doc.sm_federated_type}</span>
+          </div>
+
         </div>
       </li>
     )

@@ -285,7 +285,7 @@ class FederatedTextSearchAsYouType extends React.Component {
         href={suggestion.sm_urls[0]}
       >
         {highlightedTitle}
-        <span className="fs-element-invisible">
+        <span className="screen-hide">
           {` (${currentHumanIndex} of ${suggestionsLength})`}
         </span>
       </a>
@@ -341,7 +341,7 @@ class FederatedTextSearchAsYouType extends React.Component {
             className="fs-search-form__submit"
             onClick={this.handleSubmit}
           >
-            <span className="fs-element-invisible">Perform Search</span>
+            <span className="screen-hide">Perform Search</span>
             <SearchIcon />
           </button>
         </div>

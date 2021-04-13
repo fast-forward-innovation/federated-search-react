@@ -54,7 +54,7 @@
  * Element-invisible as defined by snook.ca
  * @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
-.fs-element-invisible,
+.screen-hide,
 .fs-element-focusable {
   position: absolute !important;
   height: 1px;

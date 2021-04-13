@@ -67,8 +67,8 @@
  * @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
 
-.fs-element-invisible,
-%fs-element-invisible {
+.screen-hide,
+%screen-hide {
   position: absolute !important;
   height: 1px;
   width: 1px;
@@ -80,7 +80,7 @@
 }
 
 /* Turns off the element-invisible effect. */
-%fs-element-invisible-off {
+%screen-hide-off {
   position: static !important;
   clip: auto;
   height: auto;
@@ -90,11 +90,11 @@
 
 .fs-element-focusable,
 %fs-element-focusable {
-  @extend %fs-element-invisible;
+  @extend %screen-hide;
 
   &:active,
   &:focus {
-    @extend %fs-element-invisible-off;
+    @extend %screen-hide-off;
   }
 }
 
