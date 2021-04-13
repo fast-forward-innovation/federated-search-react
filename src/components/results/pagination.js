@@ -61,7 +61,7 @@ class FederatedPagination extends React.Component {
 
     return (
       <nav className="pagination" role="navigation" aria-labelledby="pagination__heading">
-        <h4 id="pagination__heading">Pagination</h4>
+        <h4 id="pagination__heading" className="screen-hide">Pagination</h4>
         <ul className="pagination__controls">
           <li className={cx("pagination__control pagination__control--first", {"screen-hide": firstPageHidden})} key="start">
             <button className={cx("pagination__control-button pagination__control-button--first")} tabIndex={firstPageHidden ? "-1" : "0"} onClick={this.onPageChange.bind(this, 0)} onKeyPress={ this.buildHandleEnterKeyPress(this.onPageChange.bind(this, 0)) } title="Go to first page">
