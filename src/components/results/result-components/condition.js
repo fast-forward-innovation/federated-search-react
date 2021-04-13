@@ -38,7 +38,6 @@ class FederatedConditionResult extends FederatedResult {
 
           <div className="meta">
             <cite className="citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
-            <span className="date">{this.dateFormat(doc.ds_federated_date)}</span>
             <span className="type">{doc.sm_federated_type}</span>
           </div>
         </div>

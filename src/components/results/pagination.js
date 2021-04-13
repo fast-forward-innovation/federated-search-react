@@ -71,7 +71,7 @@ class FederatedPagination extends React.Component {
               </span>
             </button>
           </li>
-          <li className={cx("pagination__control search-pager__item--previous", {"screen-hide": prevPageHidden})} key="prev">
+          <li className={cx("pagination__control pagination__control--previous", {"screen-hide": prevPageHidden})} key="prev">
             <button className={cx("pagination__control-button pagination__control-button--prev")} tabIndex={prevPageHidden ? "-1" : "0"} onClick={this.onPageChange.bind(this, currentPage - 1)} onKeyPress={ this.buildHandleEnterKeyPress(this.onPageChange.bind(this, currentPage - 1)) }title="Go to previous page" rel="previous">
               <span className="screen-hide">Previous page</span>
               <span aria-hidden={prevPageHidden  ? "true" : "false"}>
@@ -88,7 +88,7 @@ class FederatedPagination extends React.Component {
               </span>
             </button>
           </li>
-          <li className={cx("pagination__control search-pager__item--last", {"screen-hide": lastPageHidden})} key="end">
+          <li className={cx("pagination__control pagination__control--last", {"screen-hide": lastPageHidden})} key="end">
             <button className={cx("pagination__control-button pagination__control-button--last")} tabIndex={lastPageHidden ? "-1" : "0"} onClick={this.onPageChange.bind(this, pageAmt - 1)} onKeyPress={ this.buildHandleEnterKeyPress(this.onPageChange.bind(this, pageAmt - 1)) } title="Go to last page">
               <span className="screen-hide">Last page</span>
               <span aria-hidden={lastPageHidden ? "true" : "false"}>
