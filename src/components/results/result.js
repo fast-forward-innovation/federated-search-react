@@ -6,12 +6,6 @@ import url from 'url';
 
 // Custom class for the result component
 class FederatedResult extends React.Component {
-  renderValue(field, doc) {
-    const value = [].concat(doc[field] || null).filter((v) => v !== null);
-
-    return value.join(", ");
-  }
-
   dateFormat(date){
     if (typeof date !== 'undefined') {
       const prettyDate =  new Intl.DateTimeFormat('en-US', {
@@ -19,8 +13,7 @@ class FederatedResult extends React.Component {
         month: 'long',
         day: 'numeric'
       }).format(Date.parse(date));
-      const separator = "  ·  ";
-      return separator + prettyDate;
+      return prettyDate;
     }
   }
 
@@ -83,16 +76,13 @@ class FederatedResult extends React.Component {
 
   renderSitenameLinks(sitenames, urls, originalSitename) {
     if (sitenames != null && urls != null) {
-
-      
       var sites = [];
       for (var i = 0; i < sitenames.length; i++) {
-        sites.push(<a className="fs-search-results__site-name" href={urls[i]} key={i}>{sitenames[i]}</a>);
+        sites.push(<a className="tag site" href={urls[i]} key={i}>{sitenames[i]}</a>);
         if (i !== (sitenames.length - 1)) {
 
         }
       }
-      return this.intersperse(sites, " | ");
     }
 
     if (originalSitename != null) {
@@ -115,12 +105,12 @@ class FederatedResult extends React.Component {
         
         <div className="text">
           {doc.sm_department &&
-            <div className="tags">
+            <div className="tags tags--comma department">
               <p>
                 {Array.isArray(doc.sm_department) ? doc.sm_department.map(dep => (
-                  <span className="tag tag--department">{dep}</span>
+                  <span className="tag">{dep}</span>
                 )) : 
-                  <span className="tag tag--department">BMC</span>
+                  <span className="tag">BMC</span>
                 }
               </p>
             </div>
@@ -133,13 +123,13 @@ class FederatedResult extends React.Component {
           <p className="summary" dangerouslySetInnerHTML={{__html: doc.ss_summary}} />
 
           {highlight.tm_rendered_item &&
-            <blockquote cite={this.getCanonicalLink(doc)} className="teaser" dangerouslySetInnerHTML={{__html: highlight.tm_rendered_item}} />
+            <blockquote cite={this.getCanonicalLink(doc)} className="excerpt highlight" dangerouslySetInnerHTML={{__html: highlight.tm_rendered_item}} />
           }
           
-          <div className="meta">
-            <cite className="citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
-            <span className="date">{this.dateFormat(doc.ds_federated_date)}</span>
-            <span className="type">{doc.sm_federated_type}</span>
+          <div className="meta tags tags--pipe">
+            <cite className="tags tags--list citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
+            <span className="tag date">{this.dateFormat(doc.ds_federated_date)}</span>
+            <span className="tag type">{doc.sm_federated_type}</span>
           </div>
 
         </div>

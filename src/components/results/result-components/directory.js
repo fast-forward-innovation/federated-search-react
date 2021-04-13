@@ -18,12 +18,12 @@ class FederatedDirectoryResult extends FederatedResult {
         
         <div className="text">
           {doc.sm_department &&
-            <div className="tags">
+            <div className="tags tags--comma department">
               <p>
                 {Array.isArray(doc.sm_department) ? doc.sm_department.map(dep => (
-                  <span className="tag tag--department">{dep}</span>
+                  <span className="tag">{dep}</span>
                 )) : 
-                  <span className="tag tag--department">BMC</span>
+                  <span className="tag">BMC</span>
                 }
               </p>
             </div>
@@ -35,9 +35,9 @@ class FederatedDirectoryResult extends FederatedResult {
 
           <p className="summary" dangerouslySetInnerHTML={{__html: doc.ss_summary}} />
 
-          <div className="meta">
-            <cite className="citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
-            <span className="type">{doc.sm_federated_type}</span>
+          <div className="meta tags tags--pipe">
+            <cite className="tags tags--list citation">{this.renderSitenameLinks(doc.sm_site_name, doc.sm_urls, doc.ss_site_name)}</cite>
+            <span className="tag type">{doc.sm_federated_type}</span>
           </div>
         </div>
       </li>
